@@ -1,0 +1,75 @@
+* Get the pods
+>> kubectl get pods
+>> kubectl get pods -o wide (It give some extra information)
+
+* Run the pod directly without YAML file
+>> kubectl run nginx --image=nginx
+>> kubectl run pod-name --image=docker-iamge
+
+* Detailed description of the Pod
+>> kubectl describe pod pod-name
+
+* Output the YAML file
+>> kubectl run redis --image=redis --dry-run=client -o yaml > file-name.yaml
+
+* Creat ReplicaSets or Pods using create command
+>> kubectl create -f file_name.yaml
+
+* Get ReplicaSets
+>> kubectl get replicasets
+>> kubectl get rc
+
+* Delete ReplicaSets
+>> kubectl delete replicaset rs_name --force
+
+* Replace ReplicaSet
+>> kubectl replace -f rc_file_name.yaml
+
+* Scale ReplicaSet
+>> kubectl scale --replicas=6 -f rs_file_name.yaml
+It will not update the yaml file, but it will scale the replica sets.
+
+* Scale ReplicaSet
+>> kubectl scale --replicas=6 replicaset myapp-name-replicaset
+It will update the YAML file as well.
+
+* Create Deployment
+>> kubectl create deployment --image=nginx nginx
+
+* Expose a Deployment
+>> kubectl expose deployment nginx port=8080
+
+* Scale Deployment
+>> kubectl scale deployment nginx --replicas=5
+
+* Change the image of Deployment
+>> kubectl set image deployment nginx nginx=nginx:1.18
+
+* Edit the ReplicaSet
+>> kubectl edit replicaset <replica-set-name>
+
+* Create namespace
+>> kubectl create namespace <dev-space>
+
+* Apply command
+It will create an Object if it doesn't exists before.
+
+* Set a namespcae
+>> kubectl config set-context $(kubectl config current-context) --namespace=prod
+
+* Select a Pod with a particular laberl
+>> kubectl get pod --selector env=dev,bu=finance
+
+* Taints are on Nodes
+>> kubectl taint node <node-name> key=value:taint-effect
+>> kubectl taint node node01 app=blue:NoSchedule
+taint-effects:
+1) NoSchedule
+2)PreferNoSchedule
+3) NoExecute
+
+* Remove a taint from a node
+>> kubectl taint nodes <node-name> <taints>-
+Add a minus at the end of the taint
+
+* Tolerations are on Pods
