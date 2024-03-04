@@ -88,3 +88,10 @@ Add a minus at the end of the taint
 >> `command` represents the ENTRYPOINT command in docker.
 >> `args` represents the CMD command in the docker.
 
+* Config Map
+>> kubectl create configmap app-config --from-literal=APP_COLOR=blue
+                                       --from-litearl=APP_MODE=prod
+
+* Secret
+>> kubectl create secret generic app-secret --from-literal=DB_HOST=mysql
+                                            --from_literal=DB_USER=root
