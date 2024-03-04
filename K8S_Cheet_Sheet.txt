@@ -72,4 +72,19 @@ taint-effects:
 >> kubectl taint nodes <node-name> <taints>-
 Add a minus at the end of the taint
 
-* Tolerations are on Pods
+* Change the image in deployment
+>> kubectl set image deployment/deployment-name nginx=nginx:1.9.1
+
+* Check the status of Rollout in Deployment
+>> kubectl rollout status deployment/deployment-name
+
+* Get the rollout history
+>> kubectl rollout history deployment/deployment-name
+
+* Undo the Rollour in Deployment
+>> kubectl rollout undo deployment/deployment-name
+
+* Commands and Arguments
+>> `command` represents the ENTRYPOINT command in docker.
+>> `args` represents the CMD command in the docker.
+
